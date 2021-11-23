@@ -10,9 +10,9 @@ class AVLTree:
 
 
     #Add additional methods as needed. Use the helper methods provided below.
-    def __init__(self) -> None:
+    def __init__(self, key: int = None) -> None:
         self.balance_factor = 0
-        self.key = None
+        self.key = key
         self.left = None
         self.parent = None
         self.right = None
