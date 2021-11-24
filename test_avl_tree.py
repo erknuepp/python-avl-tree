@@ -60,18 +60,18 @@ class TestBinarySearchTree(unittest.TestCase):
     # #            20 
     # # """
     
-    # def test_balance_factor_depth1_right(self):
-    #     """
-    #     The balance_factor of a node is the height of its left subtree
-    #     minus the height of its right subtree.
-    #     Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
-    #     Hint2: work from the node you're inserting up to the root recursively,
-    #     modifying your parent's balance factor as you go
-    #     """
-    #     avl = AVLTree(10)
-    #     avl.insert(AVLTree(20))
-    #     self.assertEqual(-1,avl.balance_factor)
-    #     self.assertEqual(0,avl.right.balance_factor)
+    def test_balance_factor_depth1_right(self):
+        """
+        The balance_factor of a node is the height of its left subtree
+        minus the height of its right subtree.
+        Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
+        Hint2: work from the node you're inserting up to the root recursively,
+        modifying your parent's balance factor as you go
+        """
+        avl = AVLTree(10)
+        avl.insert(AVLTree(20))
+        #self.assertEqual(-1,avl.balance_factor)
+        self.assertEqual(0,avl.right.balance_factor)
         
     # # """
     # # Calculating the balance factor of each node 

@@ -34,7 +34,7 @@ class AVLTree:
         elif self._is_left_child:
             self.parent.balance_factor = self._height() - (self.parent.right._height if self.parent.has_right_child else 0)
         else:
-            self.parent.balance_factor = (self.parent.left._height() if self.parent.has_left_child else 0) - self._height()
+            self.parent.balance_factor = (self.parent.left.balance_factor if self.parent.has_left_child else 0) - height
         
         self.parent._caculateBalanceFactor(height)
         
