@@ -6,5 +6,5 @@ from avl_tree import AVLTree
 
 
 # Example
-ages = AVLTree()
-print(ages)
+ages = AVLTree(10)
+print(ages._height())

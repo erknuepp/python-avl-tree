@@ -70,7 +70,7 @@ class TestBinarySearchTree(unittest.TestCase):
         """
         avl = AVLTree(10)
         avl.insert(AVLTree(20))
-        #self.assertEqual(-1,avl.balance_factor)
+        self.assertEqual(-1,avl.balance_factor)
         self.assertEqual(0,avl.right.balance_factor)
         
     # # """

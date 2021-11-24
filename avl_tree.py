@@ -27,16 +27,34 @@ class AVLTree:
         return max(leftHeight, rightHeight)
 
     # private helper methods
-    def _caculateBalanceFactor(self, height) -> int:
+    def _caculateBalanceFactor(self) -> int:
         
-        if self._is_root_node:
-            return
-        elif self._is_left_child:
-            self.parent.balance_factor = self._height() - (self.parent.right._height if self.parent.has_right_child else 0)
+        if self.has_left_child() and self.has_right_child():
+            self.balance_factor = self.left._height() - self.right._height()
+        elif self.has_left_child_only():
+            self.balance_factor = self.left._height() - 0
+        elif self.has_right_child_only():
+            self.balance_factor = 0 - self.right._height()
         else:
-            self.parent.balance_factor = (self.parent.left.balance_factor if self.parent.has_left_child else 0) - height
-        
-        self.parent._caculateBalanceFactor(height)
+            self.balance_factor = 0
+        # if self._is_root_node():
+        #     if self.has_left_child and self.has_right_child:
+        #         self.balance_factor = self.left._height()- self.right._height()
+        #     elif self.has_left_child_only:
+        #         self.balance_factor = self.left._height() - 0
+        #     elif self.has_right_child_only:
+        #         self.balance_factor = 0 - self.right._height()
+        #     else:
+        #         self.balance_factor = 0            
+        # else:
+        #     if self._is_left_child:
+        #         self.parent.balance_factor = self._height() - (self.parent.right._height() if self.parent.has_right_child else 0)
+        #     elif self._is_right_child:
+        #         self.parent.balance_factor = (self.parent.left._height() if self.parent.has_left_child else 0) - self._height()
+        if not self._is_root_node():
+            self.parent._caculateBalanceFactor()
+            
+
         
     # You will need to modify this method
     def insert(self, node):
@@ -52,7 +70,7 @@ class AVLTree:
                 node.parent = self 
             else:
                 self.right.insert(node)
-        self._caculateBalanceFactor(0)
+        self._caculateBalanceFactor()
     
 
     # Do not modify these helper functions. They are included for your convenience,
