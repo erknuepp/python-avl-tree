@@ -36,7 +36,23 @@ class TestBinarySearchTree(unittest.TestCase):
         self.assertIsNone(avl.key)
         self.assertIsNone(avl.parent)
         self.assertEqual(0,avl.balance_factor)
-  
+    
+    def test_height_zero(self):
+        avl = AVLTree(10)
+        self.assertEqual(0,avl._height())
+
+    def test_height_one(self):
+        avl = AVLTree(10)
+        avl.insert(AVLTree(20))
+        self.assertEqual(1,avl._height())
+
+    def test_height_two(self):
+        avl = AVLTree(10)
+        avl.insert(AVLTree(5))
+        avl.insert(AVLTree(20))
+        avl.insert(AVLTree(30))
+        self.assertEqual(2,avl._height())
+
     # # """
     # # Calculating the balance factor of each node 
     # #        10
@@ -44,18 +60,18 @@ class TestBinarySearchTree(unittest.TestCase):
     # #            20 
     # # """
     
-    def test_balance_factor_depth1_right(self):
-        """
-        The balance_factor of a node is the height of its left subtree
-        minus the height of its right subtree.
-        Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
-        Hint2: work from the node you're inserting up to the root recursively,
-        modifying your parent's balance factor as you go
-        """
-        avl = AVLTree(10)
-        avl.insert(AVLTree(20))
-        self.assertEqual(-1,avl.balance_factor)
-        self.assertEqual(0,avl.right.balance_factor)
+    # def test_balance_factor_depth1_right(self):
+    #     """
+    #     The balance_factor of a node is the height of its left subtree
+    #     minus the height of its right subtree.
+    #     Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
+    #     Hint2: work from the node you're inserting up to the root recursively,
+    #     modifying your parent's balance factor as you go
+    #     """
+    #     avl = AVLTree(10)
+    #     avl.insert(AVLTree(20))
+    #     self.assertEqual(-1,avl.balance_factor)
+    #     self.assertEqual(0,avl.right.balance_factor)
         
     # # """
     # # Calculating the balance factor of each node 
