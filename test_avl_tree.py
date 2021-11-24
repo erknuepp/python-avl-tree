@@ -37,21 +37,30 @@ class TestBinarySearchTree(unittest.TestCase):
         self.assertIsNone(avl.parent)
         self.assertEqual(0,avl.balance_factor)
     
-    def test_height_zero(self):
-        avl = AVLTree(10)
-        self.assertEqual(0,avl._height())
+    # def test_height_zero(self):
+    #     avl = AVLTree(10)
+    #     self.assertEqual(0,avl._height(avl))
 
-    def test_height_one(self):
-        avl = AVLTree(10)
-        avl.insert(AVLTree(20))
-        self.assertEqual(1,avl._height())
+    # def test_height_one(self):
+    #     avl = AVLTree(10)
+    #     avl.insert(AVLTree(20))
+    #     self.assertEqual(1,avl._height(avl))
 
-    def test_height_two(self):
-        avl = AVLTree(10)
-        avl.insert(AVLTree(5))
-        avl.insert(AVLTree(20))
-        avl.insert(AVLTree(30))
-        self.assertEqual(2,avl._height())
+    # def test_height_two(self):
+    #     avl = AVLTree(10)
+    #     avl.insert(AVLTree(5))
+    #     avl.insert(AVLTree(20))
+    #     avl.insert(AVLTree(30))
+    #     self.assertEqual(2,avl._height(avl))
+
+    # def test_height_three(self):
+    #     avl = AVLTree(10)
+    #     avl.insert(AVLTree(5))
+    #     avl.insert(AVLTree(2))
+    #     avl.insert(AVLTree(20))
+    #     avl.insert(AVLTree(30))
+    #     avl.insert(AVLTree(40))
+    #     self.assertEqual(3,avl._height(avl))
 
     # # """
     # # Calculating the balance factor of each node 
@@ -80,18 +89,18 @@ class TestBinarySearchTree(unittest.TestCase):
     # #          5 
     # # """
     
-    # def test_balance_factor_depth1_left(self):
-    #     """
-    #     The balance_factor of a node is the height of its left subtree
-    #     minus the height of its right subtree.
-    #     Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
-    #     Hint2: work from the node you're inserting up to the root recursively,
-    #     modifying your parent's balance factor as you go
-    #     """
-    #     avl = AVLTree(10)
-    #     avl.insert(AVLTree(5))
-    #     self.assertEqual(1,avl.balance_factor)
-    #     self.assertEqual(0,avl.left.balance_factor)
+    def test_balance_factor_depth1_left(self):
+        """
+        The balance_factor of a node is the height of its left subtree
+        minus the height of its right subtree.
+        Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
+        Hint2: work from the node you're inserting up to the root recursively,
+        modifying your parent's balance factor as you go
+        """
+        avl = AVLTree(10)
+        avl.insert(AVLTree(5))
+        self.assertEqual(1,avl.balance_factor)
+        self.assertEqual(0,avl.left.balance_factor)
         
         
     # # """
@@ -103,22 +112,22 @@ class TestBinarySearchTree(unittest.TestCase):
     # #               30
     # # """
     
-    # def test_balance_factor_depth2_right(self):
-    #     """
-    #     The balance_factor of a node is the height of its left subtree
-    #     minus the height of its right subtree.
-    #     Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
-    #     Hint2: work from the node you're inserting up to the root recursively,
-    #     modifying your parent's balance factor as you go
-    #     """
-    #     avl = AVLTree(10)
-    #     avl.insert(AVLTree(5))
-    #     avl.insert(AVLTree(20))
-    #     avl.insert(AVLTree(30))
-    #     self.assertEqual(-1,avl.balance_factor)
-    #     self.assertEqual(-1,avl.right.balance_factor)
-    #     self.assertEqual(0,avl.right.right.balance_factor)
-    #     self.assertEqual(0,avl.left.balance_factor)
+    def test_balance_factor_depth2_right(self):
+        """
+        The balance_factor of a node is the height of its left subtree
+        minus the height of its right subtree.
+        Hint: create helper method _caculateBalanceFactor and call it from insert after inserting a node
+        Hint2: work from the node you're inserting up to the root recursively,
+        modifying your parent's balance factor as you go
+        """
+        avl = AVLTree(10)
+        avl.insert(AVLTree(5))
+        avl.insert(AVLTree(20))
+        avl.insert(AVLTree(30))
+        self.assertEqual(-1,avl.balance_factor)
+        self.assertEqual(-1,avl.right.balance_factor)
+        self.assertEqual(0,avl.right.right.balance_factor)
+        self.assertEqual(0,avl.left.balance_factor)
 
 
     # # """
@@ -130,22 +139,22 @@ class TestBinarySearchTree(unittest.TestCase):
     # #        1
     # # """
     
-    # def test_balance_factor_depth2_left(self):
-    #     """
-    #     The balance_factor of a node is the height of its left subtree
-    #     minus the height of its right subtree.
-    #     Hint: create helper method _calculateBalanceFactor and call it from insert after inserting a node
-    #     Hint2: work from the node you're inserting up to the root recursively,
-    #     modifying your parent's balance factor as you go
-    #     """
-    #     avl = AVLTree(10)
-    #     avl.insert(AVLTree(5))
-    #     avl.insert(AVLTree(20))
-    #     avl.insert(AVLTree(1))
-    #     self.assertEqual(1,avl.balance_factor)
-    #     self.assertEqual(1,avl.left.balance_factor)
-    #     self.assertEqual(0,avl.left.left.balance_factor)
-    #     self.assertEqual(0,avl.right.balance_factor)
+    def test_balance_factor_depth2_left(self):
+        """
+        The balance_factor of a node is the height of its left subtree
+        minus the height of its right subtree.
+        Hint: create helper method _calculateBalanceFactor and call it from insert after inserting a node
+        Hint2: work from the node you're inserting up to the root recursively,
+        modifying your parent's balance factor as you go
+        """
+        avl = AVLTree(10)
+        avl.insert(AVLTree(5))
+        avl.insert(AVLTree(20))
+        avl.insert(AVLTree(1))
+        self.assertEqual(1,avl.balance_factor)
+        self.assertEqual(1,avl.left.balance_factor)
+        self.assertEqual(0,avl.left.left.balance_factor)
+        self.assertEqual(0,avl.right.balance_factor)
     
     # # """
     # # RR Imbalance, left rotation
